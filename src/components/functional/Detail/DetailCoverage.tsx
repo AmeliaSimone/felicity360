@@ -74,21 +74,21 @@ const DetailCoverage = ({ product }: DetailCoverageProps) => {
       title: section,
       data: groupedBySection[section].map((item, key) => ({
         rowData: [
-          <p className={styles.text}>{item?.name}</p>,
-          <p className={styles.titleContainer}>
-            <span className={styles.titleRed}>
-              {item.maximum.trim().split(/\s+/)[0]}
-            </span>
-            {item.maximum.trim().split(/\s+/)[1]}
-            {`${
-              item.amount === 0
-                ? ""
-                : `
-          hasta ${item.amount} 
-          ${dataCurrency[item.currency]}
-          `
-            }`}
-          </p>,
+          <p key={`name-${key}`} className={styles.text}>{item?.name}</p>,
+      <p key={`title-${key}`} className={styles.titleContainer}>
+        <span className={styles.titleRed}>
+          {item.maximum.trim().split(/\s+/)[0]}
+        </span>
+        {item.maximum.trim().split(/\s+/)[1]}
+        {`${
+          item.amount === 0
+            ? ""
+            : `
+        hasta ${item.amount} 
+        ${dataCurrency[item.currency]}
+        `
+        }`}
+      </p>,
 
           item.events === 1 ? (
             <p className={styles.titleContainer}>
@@ -99,9 +99,9 @@ const DetailCoverage = ({ product }: DetailCoverageProps) => {
               <span className={styles.titleRed}>{item.events}</span> Eventos
             </p>
           ),
-          <p className={styles.titleContainer}>
-            <span className={styles.titleRed}>{item.lack}</span> Días
-          </p>,
+          <p key={`lack-${key}`} className={styles.titleContainer}>
+          <span className={styles.titleRed}>{item.lack}</span> Días
+        </p>,
         ],
       })),
     })
@@ -112,29 +112,29 @@ const DetailCoverage = ({ product }: DetailCoverageProps) => {
       title: section,
       data: groupedBySection[section].map((item, key) => ({
         rowData: [
-          <p className={styles.text}>{item?.name}</p>,
+          <p key={`name-${key}`} className={styles.text}>{item?.name}</p>,
 
           item.maximum.trim().split(/\s+/)[0] === "50%" ? (
-            <p className={styles.titleContainer}>{item.maximum}</p>
+            <p key={`maximum-${key}`} className={styles.titleContainer}>{item.maximum}</p>
           ) : (
-            <p className={styles.titleContainer}>
+            <p key={`maximum-${key}`} className={styles.titleContainer}>
               <span className={styles.titleRed}>
                 {item.maximum.trim().split(/\s+/)[0]}
               </span>
             </p>
           ),
-
-          <p className={styles.titleContainer}>
+  
+          <p key={`amount-${key}`} className={styles.titleContainer}>
             {item.currency === "U"
               ? ` ${item.amount} ${dataCurrency[item.currency]}`
               : formatPrice(item.amount.toString())}
           </p>,
           item.events === 1 ? (
-            <p className={styles.titleContainer}>
+            <p key={`events-${key}`} className={styles.titleContainer}>
               <span className={styles.titleRed}>{item.events}</span> Evento
             </p>
           ) : (
-            <p className={styles.titleContainer}>
+            <p key={`events-${key}`} className={styles.titleContainer}>
               <span className={styles.titleRed}>{item.events}</span> Eventos
             </p>
           ),
@@ -148,22 +148,22 @@ const DetailCoverage = ({ product }: DetailCoverageProps) => {
       title: section,
       data: groupedBySection[section].map((item, key) => ({
         rowData: [
-          <p className={styles.text}>{item?.name}</p>,
+          <p key={`name-${key}`} className={styles.text}>{item?.name}</p>,
 
-          <p className={styles.titleContainer}>
+          <p key={`maximum-${key}`} className={styles.titleContainer}>
             <span className={styles.titleRed}>
               {item.maximum.trim().split(/\s+/)[0]}
             </span>
           </p>,
-          <p className={styles.titleContainer}>
+          <p key={`amount-${key}`} className={styles.titleContainer}>
             {formatPrice(item.amount.toString())}
           </p>,
           item.events === 1 ? (
-            <p className={styles.titleContainer}>
+            <p key={`events-${key}`} className={styles.titleContainer}>
               <span className={styles.titleRed}>{item.events}</span> Evento
             </p>
           ) : (
-            <p className={styles.titleContainer}>
+            <p key={`events-${key}`} className={styles.titleContainer}>
               <span className={styles.titleRed}>{item.events}</span> Eventos
             </p>
           ),

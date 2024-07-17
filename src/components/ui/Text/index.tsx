@@ -1,3 +1,5 @@
-import {Text, NumberText} from "./Text";
+import { Text, NumberText } from "./Text";
 
-export default {Text, NumberText};
+const TextComponents = { Text, NumberText };
+
+export default TextComponents;
